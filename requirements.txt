@@ -8,3 +8,4 @@ torchvision==0.18.1
 ultralytics==8.2.103  # (선택) 설치만, 기본은 torchvision 모델 사용
 deepface==0.0.93
 tqdm==4.66.4
+tf-keras==2.20.0
