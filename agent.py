@@ -70,7 +70,7 @@ def main():
         goods_nm = str(row.get(args.name_col, ''))
         full_nm  = str(row.get(args.cat_col, ''))
         img_url  = str(row.get(args.url_col, ''))
-        predicted= str(row.get(args.pred-col, ''))
+        predicted= str(row.get(args.pred_col, ''))
 
         try:
             img = fetch_image(img_url)
