@@ -1,0 +1,10 @@
+pandas==2.2.2
+requests==2.32.3
+Pillow==10.4.0
+numpy==1.26.4
+opencv-python-headless==4.10.0.84
+torch==2.3.1
+torchvision==0.18.1
+ultralytics==8.2.103  # (선택) 설치만, 기본은 torchvision 모델 사용
+deepface==0.0.93
+tqdm==4.66.4
