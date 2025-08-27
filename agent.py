@@ -122,7 +122,7 @@ def main():
     ap.add_argument('--name-col', default='goods_nm')
     ap.add_argument('--cat-col', default='full_nm')
     ap.add_argument('--pred-col', default='gender')
-    ap.add_argument('--limit', type=int, default=20, help='처리할 최대 행 수(테스트용). 전체 실행 시 크게 올리거나 제거.')
+    ap.add_argument('--limit', type=int, default=0, help='처리할 최대 행 수(테스트용). 전체 실행 시 크게 올리거나 제거.')
     args = ap.parse_args()
 
     df = pd.read_csv(args.csv)
