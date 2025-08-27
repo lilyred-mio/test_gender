@@ -10,7 +10,7 @@ import pandas as pd
 from PIL import Image
 from tqdm import tqdm
 
-from rules import Decision, decide_no_model, PERSON_CONF_TH, GENDER_CONF_TH
+from rules import Decision, decide_no_model, PERSON_CONF_TH, GENDER_CONF_TH, is_woman_only
 from detectors.person_detector import PersonDetector
 from detectors.gender_estimator import GenderEstimator
 
@@ -30,6 +30,10 @@ def pil_to_np(img: Image.Image):
 
 def decide_with_image(img: Image.Image, goods_nm: str, full_nm: str,
                       person_det: PersonDetector, gender_est: GenderEstimator) -> Decision:
+    # 0) 여성 전용 키워드 우선
+    if is_woman_only(goods_nm, full_nm):
+        return Decision("W", "여성 전용 키워드 매칭(원피스/스커트/여성/woman/women/dress/skirt) → W")
+                          
     # 1) 사람(모델) 존재 여부
     persons = person_det.detect(img)
     if len(persons) > 0:
@@ -42,7 +46,7 @@ def decide_with_image(img: Image.Image, goods_nm: str, full_nm: str,
             else:
                 return Decision('W', '모델 착용컷: 자동 성별 추정(여성)')
         else:
-            return Decision('U', '모델 착용컷: 자동 추정 불확실 → U')
+             return Decision(predicted_init, "모델컷: 성별 불확실 → 최초 입력 성별 사용")
 
     # 2) 모델 없음 → 상품명/카테고리 규칙
     return decide_no_model(goods_nm, full_nm)
