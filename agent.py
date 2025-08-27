@@ -78,7 +78,7 @@ def main():
 
         try:
             img = fetch_image(img_url)
-            decision = decide_with_image(img, goods_nm, full_nm, person_det, gender_est)
+            decision = decide_with_image(img, goods_nm, full_nm, predicted, person_det, gender_est)
         except Exception as e:
             decision = decide_no_model(goods_nm, full_nm)
             decision.reason = f"이미지 로드 실패 → {decision.reason}"
