@@ -112,7 +112,7 @@ def main():
     ap.add_argument('--name-col', default='goods_nm')
     ap.add_argument('--cat-col', default='full_nm')
     ap.add_argument('--pred-col', default='gender')
-    ap.add_argument('--limit', type=int, default=20)
+    ap.add_argument('--limit', type=int, default=0)
     args = ap.parse_args()
 
     df = pd.read_csv(args.csv)
